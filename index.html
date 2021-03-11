@@ -1,0 +1,112 @@
+<html>
+<head>
+  <link href="crossover.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:bold" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>crossover drinks database</title>
+</head>
+<body>
+
+  <div id="title-container">
+    <div id="menu"><i class="fas fa-bars" onclick="showMenu(this)"></i></div>
+    <div id="title">crossover drinks database
+    <div class="credit-line">created by india lindeman for use at crossover cantina and eatery</div>
+    </div>
+    <div id="menu-container">
+    <div id="menu-line">
+      <div class="menu-item-container"><i class="far fa-calendar-check"></i><div class="menu-item" id="date">today's date</div></div>
+      <div class="menu-item-container" onclick="refresh()"><i class="fas fa-cocktail" id="drink-icon"></i><div class="menu-item" id="drink-of-the-week"></div></div>
+      <div class="menu-item-container"><i>86</i><div class="menu-item" id="eighty-six">86</div></div>
+    </div>
+  </div>
+  </div>
+
+<div id="content-container">
+  <div id="result-container">
+    <div class="container">
+  <div id="result-title"></div>
+  <div id="result"></div>
+  </div>
+  </div>
+
+<div id="search-container">
+  <div id="search-header">
+    <button class="mastersearchbtn" id="dataSearchButton">cocktail&nbsp;search&nbsp;menu</button>
+    <button class="close" id="hideDataSearchButton" onclick="hideForms()"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="button-container">
+  <button onclick="openForm(this.id)" class="propertybtn" id="drinkButton"><i class="fas fa-cocktail"></i>drink</button>
+  <button onclick="openForm(this.id)" class="propertybtn" id="priceButton"><i class="fas fa-dollar-sign"></i>price</button>
+  <button onclick="openForm(this.id)" class="propertybtn" id="seasonButton"><i class="fas fa-cloud-sun"></i>season</button>
+  <button onclick="openForm(this.id)" class="propertybtn" id="ingredientButton"><i class="fas fa-mortar-pestle"></i>ingredient</button>
+  <button onclick="openForm(this.id)" class="propertybtn" id="garnishButton"><i class="fas fa-lemon"></i>garnish</button>
+  <button onclick="openForm(this.id)" class="propertybtn" id="glassButton"><i class="fas fa-glass-cheers"></i>glass</button>
+</div>
+<form id="drinkForm" class="form-styling" onsubmit="return false;">
+    <input type="text" onfocus="this.value=''" id="userInputDrink" value="search for a drink"/>
+    <input type="submit" id="drinkSearch" value="submit"/>
+</form>
+<form id="priceForm" class="form-styling" onsubmit="return false;">
+    <input type="text" onfocus="this.value=''" id="userInputPrice" value="search for a price"/>
+    <input type="submit" id="priceSearch" value="submit"/>
+</form>
+
+<form id="seasonForm" class="form-styling" onsubmit="return false;">
+    <input type="text" onfocus="this.value=''" id="userInputSeason" value="search for a season"/>
+    <input type="submit" id="seasonSearch" value="submit"/>
+</form>
+
+<form id="ingredientForm" class="form-styling" onsubmit="return false;">
+    <input type="text" onfocus="this.value=''" id="userInputIngredient" value="search for an ingredient"/>
+    <input type="submit" id="ingredientSearch" value="submit"/>
+</form>
+
+<form id="garnishForm" class="form-styling" onsubmit="return false;">
+    <input type="text" onfocus="this.value=''" id="userInputGarnish" value="search for a garnish"/>
+    <input type="submit" id="garnishSearch" value="submit"/>
+</form>
+
+<form id="glassForm" class="form-styling" onsubmit="return false;">
+    <input type="text" onfocus="this.value=''" id="userInputGlass" value="search for a glass"/>
+    <input type="submit" id="glassSearch" value="submit"/>
+</form>
+
+<div id="drinks-list" class="nav-line">
+  <div class="list-header">drink lists</div>
+  <div id="drink-button-container">
+<button onClick="printDictionaries(cocktail)" class="searchbtn" id="cocktailButton"><i class="fas fa-cocktail"></i><div id="cocktail-button-text">cocktails</div></button>
+<button onClick="printDictionaries(liquor)" class="searchbtn" id="liquorButton"><i class="fas fa-glass-whiskey"></i><div id="liquor-button-text">liquor</div></button>
+<button onClick="printDictionaries(beer)" class="searchbtn" id="beerButton"><i class="fas fa-beer"></i><div id="beer-button-text">beer</div></button>
+<button onClick="printDictionaries(wine)" class="searchbtn" id="wineButton"><i class="fas fa-wine-glass-alt"></i><div id="wine-button-text">wine</div></button>
+</div>
+</div>
+
+<div id="liquor-list" class="nav-line">
+<button onClick="openLiquorDictionary(this.id, whiskey)" class="liquorbtn" id="whiskeyButton">whiskey</button>
+<button onClick="openLiquorDictionary(this.id, scotch)" class="liquorbtn" id="scotchButton">scotch</button>
+<button onClick="openLiquorDictionary(this.id, bourbon)" class="liquorbtn" id="bourbonButton">bourbon</button>
+<button onClick="openLiquorDictionary(this.id, brandy)" class="liquorbtn" id="brandyButton">brandy</button>
+<button onClick="openLiquorDictionary(this.id, vodka)" class="liquorbtn" id="vodkaButton">vodka</button>
+<button onClick="openLiquorDictionary(this.id, gin)" class="liquorbtn" id="ginButton">gin</button>
+<button onClick="openLiquorDictionary(this.id, tequila)" class="liquorbtn" id="tequilaButton">tequila</button>
+<button onClick="openLiquorDictionary(this.id, rum)" class="liquorbtn" id="rumButton">rum</button>
+<button onClick="openLiquorDictionary(this.id, liqueur)" class="liquorbtn" id="liqueurButton">liqueur</button>
+</div>
+
+
+<div id="beer-filters" class="nav-line">
+<button onClick="searchBeer(tap, this.id)" class="liquorbtn" id="tap-button">on tap</button>
+<button onClick="searchBeer(bottle, this.id)" class="liquorbtn" id="bottle-button">bottled</button>
+<button onClick="searchBeer(domestic, this.id)" class="liquorbtn" id="domestic-button">domestic</button>
+<button onClick="searchBeer(imports, this.id)" class="liquorbtn" id="import-button">import & specialty</button>
+</div>
+
+<div id="bottom-border"></div>
+
+</div>
+
+</body>
+  <script src="crossover.js"></script>
+</html>
